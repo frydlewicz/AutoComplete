@@ -1,0 +1,31 @@
+.autoComplete__list {
+    display: none;
+    position: absolute;
+    z-index: 99;
+    overflow: hidden;
+    background: @backgroundColor;
+    border-radius: @borderRadius;
+    box-shadow: @boxShadow;
+    font-size: 90%;
+
+    &:empty {
+        display: none !important;
+    }
+
+    .autoComplete__list-item {
+        max-width: 300px;
+        padding: 4px 6px;
+        white-space: nowrap;
+        border-bottom: @itemBorder;
+        cursor: pointer;
+    }
+
+    .autoComplete__list-item:last-child {
+        border-bottom: none;
+    }
+
+    .autoComplete__list-item:hover,
+    .autoComplete__list-item--active {
+        background: @activeColor;
+    }
+}

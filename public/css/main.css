@@ -1,0 +1,181 @@
+@font-face {
+  font-family: 'Muli';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Muli Italic'), local('Muli-Italic'), url(https://fonts.gstatic.com/s/muli/v13/7Au-p_0qiz-afTf2IQLT8kU.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Muli';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Muli Italic'), local('Muli-Italic'), url(https://fonts.gstatic.com/s/muli/v13/7Au-p_0qiz-afTf2LwLT.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Muli';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: local('Muli Light'), local('Muli-Light'), url(https://fonts.gstatic.com/s/muli/v13/7Au_p_0qiz-adZnkOCv2z3wM.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Muli';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: local('Muli Light'), local('Muli-Light'), url(https://fonts.gstatic.com/s/muli/v13/7Au_p_0qiz-adZnkOCX2zw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Muli';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Muli Regular'), local('Muli-Regular'), url(https://fonts.gstatic.com/s/muli/v13/7Auwp_0qiz-afTzGLRrX.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Muli';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Muli Regular'), local('Muli-Regular'), url(https://fonts.gstatic.com/s/muli/v13/7Auwp_0qiz-afTLGLQ.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Muli';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Muli Bold'), local('Muli-Bold'), url(https://fonts.gstatic.com/s/muli/v13/7Au_p_0qiz-adYnjOCv2z3wM.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Muli';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Muli Bold'), local('Muli-Bold'), url(https://fonts.gstatic.com/s/muli/v13/7Au_p_0qiz-adYnjOCX2zw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+.autoComplete__list {
+  display: none;
+  position: absolute;
+  z-index: 99;
+  overflow: hidden;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+  font-size: 90%;
+}
+.autoComplete__list:empty {
+  display: none !important;
+}
+.autoComplete__list .autoComplete__list-item {
+  max-width: 300px;
+  padding: 4px 6px;
+  white-space: nowrap;
+  border-bottom: 1px solid #f1f1f1;
+  cursor: pointer;
+}
+.autoComplete__list .autoComplete__list-item:last-child {
+  border-bottom: none;
+}
+.autoComplete__list .autoComplete__list-item:hover,
+.autoComplete__list .autoComplete__list-item--active {
+  background: #e1f0ff;
+}
+a,
+a:link,
+a:visited {
+  color: #398FE5;
+  text-decoration: none;
+}
+a:active,
+a:hover {
+  text-decoration: underline;
+}
+input[type="date"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="month"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="time"],
+input[type="url"],
+input[type="week"],
+textarea {
+  width: 250px;
+  padding: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  height: 100%;
+  color: rgba(0, 0, 0, 0.8);
+}
+body {
+  font-family: 'Muli', sans-serif;
+  font-size: 16px;
+}
+strong {
+  display: inline-block;
+  padding: 2px 5px;
+  background: #e1f0ff;
+  border-radius: 10px;
+}
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  padding-bottom: 40px;
+  margin-bottom: -40px;
+}
+main .box {
+  padding: 15px 25px 25px 25px;
+  border-radius: 10px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+}
+main .box header {
+  margin-bottom: 25px;
+  text-align: center;
+}
+main .box header h1 {
+  padding-bottom: 5px;
+  font-size: 60px;
+  font-weight: 300;
+}
+main .box header p {
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  color: #999;
+  font-size: 20px;
+  font-style: italic;
+}
+main .box > div {
+  overflow: auto;
+  margin-bottom: 10px;
+}
+main .box > div .half {
+  width: 50%;
+  float: left;
+}
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+}

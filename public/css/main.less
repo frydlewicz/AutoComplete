@@ -1,0 +1,83 @@
+@import './font.less';
+@import './params.less';
+@import './jquery.autoComplete.less';
+@import './link.less';
+@import './form.less';
+
+.center() {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+    color: @fontColor;
+}
+
+body {
+    font-family: 'Muli', sans-serif;
+    font-size: 16px;
+}
+
+strong {
+    display: inline-block;
+    padding: 2px 5px;
+    background: @activeColor;
+    border-radius: @borderRadius;
+}
+
+main {
+    .center();
+
+    min-height: 100%;
+    padding-bottom: @footerHeight;
+    margin-bottom: -@footerHeight;
+
+    .box {
+        padding: 15px 25px 25px 25px;
+        border-radius: @borderRadius;
+        box-shadow: @boxShadow;
+
+        header {
+            margin-bottom: 25px;
+            text-align: center;
+
+            h1 {
+                padding-bottom: 5px;
+                font-size: 60px;
+                font-weight: 300;
+            }
+
+            p {
+                border-top: @inputBorder;
+                color: @grayColor;
+                font-size: 20px;
+                font-style: italic;
+            }
+        }
+
+        &>div {
+            overflow: auto;
+            margin-bottom: 10px;
+
+            .half {
+                width: 50%;
+                float: left;
+            }
+        }
+    }
+}
+
+footer {
+    .center();
+
+    height: @footerHeight;
+}

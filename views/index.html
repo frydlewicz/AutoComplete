@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>AutoComplete</title>
+
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+    <main>
+        <div class="box">
+            <header>
+                <h1>AutoComplete</h1>
+                <p>cities of the world example</p>
+            </header>
+            <div>
+                response time: <strong id="responseTime">0 ms</strong>
+            </div>
+            <div>
+                <label>
+                    start typing:
+                    <input type="text" id="autoComplete">
+                </label>
+            </div>
+            <div>
+                <div class="half">
+                    <label>
+                        <input type="radio" name="protocol">
+                        http
+                    </label>&nbsp;
+                    <label>
+                        <input type="radio" name="protocol" id="useSocket" checked>
+                        socket
+                    </label>
+                </div>
+                <div class="half">
+                    <label>
+                        <input type="checkbox" id="useCache" checked>
+                        cache
+                    </label>
+                </div>
+            </div>
+            <p>
+                <small>Developed using Node.js, Socket.IO, TypeScript and&nbsp;less</small>
+            </p>
+        </div>
+    </main>
+    <footer>
+        <span>
+            &copy;&nbsp;Copyright <a target="_blank" href="https://frydlewicz.pl">Kamil&nbsp;Frydlewicz</a> 2019
+        </span>
+    </footer>
+
+    <script defer src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script defer src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+    <script defer src="/js/jquery.autoComplete.js"></script>
+    <script defer src="/js/stopwatch.js"></script>
+    <script defer src="/js/client.js"></script>
+</body>
+
+</html>
