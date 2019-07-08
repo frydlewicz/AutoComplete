@@ -46,6 +46,11 @@ main {
         border-radius: @borderRadius;
         box-shadow: @boxShadow;
 
+        @media (max-width: @maxMobileWidth) {
+            width: 100%;
+            border-radius: 0;
+        }
+
         header {
             margin-bottom: 25px;
             text-align: center;
@@ -54,13 +59,21 @@ main {
                 padding-bottom: 5px;
                 font-size: 60px;
                 font-weight: 300;
+
+                @media (max-width: @maxMobileWidth) {
+                    font-size: 44px;
+                }
             }
 
             p {
                 border-top: @inputBorder;
                 color: @grayColor;
-                font-size: 20px;
                 font-style: italic;
+                font-size: 20px;
+
+                @media (max-width: @maxMobileWidth) {
+                    font-size: 17px;
+                }
             }
         }
 
@@ -71,6 +84,12 @@ main {
             .half {
                 width: 50%;
                 float: left;
+            }
+        }
+
+        @media (max-width: @maxMobileWidth) {
+            small {
+                font-size: 11px;
             }
         }
     }

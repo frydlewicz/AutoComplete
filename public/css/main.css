@@ -150,6 +150,12 @@ main .box {
   border-radius: 10px;
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
 }
+@media (max-width: 600px) {
+  main .box {
+    width: 100%;
+    border-radius: 0;
+  }
+}
 main .box header {
   margin-bottom: 25px;
   text-align: center;
@@ -159,11 +165,21 @@ main .box header h1 {
   font-size: 60px;
   font-weight: 300;
 }
+@media (max-width: 600px) {
+  main .box header h1 {
+    font-size: 44px;
+  }
+}
 main .box header p {
   border-top: 1px solid rgba(0, 0, 0, 0.2);
   color: #999;
-  font-size: 20px;
   font-style: italic;
+  font-size: 20px;
+}
+@media (max-width: 600px) {
+  main .box header p {
+    font-size: 17px;
+  }
 }
 main .box > div {
   overflow: auto;
@@ -172,6 +188,11 @@ main .box > div {
 main .box > div .half {
   width: 50%;
   float: left;
+}
+@media (max-width: 600px) {
+  main .box small {
+    font-size: 11px;
+  }
 }
 footer {
   display: flex;
