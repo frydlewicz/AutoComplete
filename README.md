@@ -7,6 +7,8 @@ Proof of concept application implements auto complete client-server solution (ci
 **Node.js** server serves set of cached records by two possibilities methods - using http protocol or socket.
 Client uses **jQuery**, **mustache** and **less**. All code written in **TypeScript**.
 
+![AutoComplete screenshot](https://autocomplete.frydlewicz.pl/autocomplete.png)
+
 ## Example
 * [cities of the world](https://autocomplete.frydlewicz.pl)
 
