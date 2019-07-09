@@ -10,6 +10,12 @@
     justify-content: center;
 }
 
+.position() {
+    left: 0;
+    top: 0;
+    width: 100%;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -32,6 +38,35 @@ strong {
     padding: 2px 5px;
     background: @activeColor;
     border-radius: @borderRadius;
+}
+
+nav {
+    .position();
+
+    position: fixed;
+    padding: 15px 10px 0 15px;
+    color: @grayColor;
+
+    &:before {
+        .position();
+
+        content: ' ';
+        position: absolute;
+        height: 5px;
+        background: linear-gradient(to right, @linkColor, @activeColor, #ccc);
+    }
+
+    .left {
+        float: left;
+    }
+
+    .right {
+        float: right;
+
+        img {
+            height: 32px;
+        }
+    }
 }
 
 main {

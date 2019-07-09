@@ -137,6 +137,32 @@ strong {
   background: #e1f0ff;
   border-radius: 10px;
 }
+nav {
+  left: 0;
+  top: 0;
+  width: 100%;
+  position: fixed;
+  padding: 15px 10px 0 15px;
+  color: #999;
+}
+nav:before {
+  left: 0;
+  top: 0;
+  width: 100%;
+  content: ' ';
+  position: absolute;
+  height: 5px;
+  background: linear-gradient(to right, #398FE5, #e1f0ff, #ccc);
+}
+nav .left {
+  float: left;
+}
+nav .right {
+  float: right;
+}
+nav .right img {
+  height: 32px;
+}
 main {
   display: flex;
   align-items: center;
