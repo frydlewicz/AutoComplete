@@ -70,3 +70,24 @@ export const addRecord = (displayText?: string, outputText?: string, visible?: b
         records: [record].map(getPublicProps),
     };
 };
+
+export const removeRecord = (id?: number): IResult => {
+    if (!id) {
+        return { status: Status.failure };
+    }
+
+    const length: number = records.length;
+
+    for (let i: number = 0; i < length; ++i) {
+        const record: IRecord = records[i];
+
+        if (record.id === id) {
+            records.splice(i, 1);
+            revokeCache();
+
+            return { status: Status.success };
+        }
+    }
+
+    return { status: Status.failure };
+};

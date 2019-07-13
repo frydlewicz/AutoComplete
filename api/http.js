@@ -19,4 +19,10 @@ router.post('/addRecord', function (req, res) {
     var result = Record_1.addRecord(display_text, output_text, visible);
     res.status(result.status === Main_1.Status.success ? 200 : 400).json(result);
 });
+router.delete('removeRecord:id', function (req, res) {
+    var data = req.params;
+    var id = data.id;
+    var result = Record_1.removeRecord(id);
+    res.status(result.status === Main_1.Status.success ? 200 : 400).json(result);
+});
 exports.default = router;

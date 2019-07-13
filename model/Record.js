@@ -52,3 +52,18 @@ exports.addRecord = function (displayText, outputText, visible) {
         records: [record].map(getPublicProps),
     };
 };
+exports.removeRecord = function (id) {
+    if (!id) {
+        return { status: Main_1.Status.failure };
+    }
+    var length = records.length;
+    for (var i = 0; i < length; ++i) {
+        var record = records[i];
+        if (record.id === id) {
+            records.splice(i, 1);
+            Cache_1.revokeCache();
+            return { status: Main_1.Status.success };
+        }
+    }
+    return { status: Main_1.Status.failure };
+};

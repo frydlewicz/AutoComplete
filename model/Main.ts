@@ -14,3 +14,7 @@ export interface IAddRequest {
     output_text: string;
     visible?: boolean;
 }
+
+export interface IRemoveRequest {
+    id: number;
+}

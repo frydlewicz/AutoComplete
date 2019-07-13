@@ -12,5 +12,10 @@ var connection = function (socket) {
         var result = Record_1.addRecord(display_text, output_text, visible);
         callback(result);
     });
+    socket.on('removeRecord', function (data, callback) {
+        var id = data.id;
+        var result = Record_1.removeRecord(id);
+        callback(result);
+    });
 };
 exports.default = connection;
