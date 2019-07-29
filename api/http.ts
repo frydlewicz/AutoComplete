@@ -7,7 +7,12 @@ const router = express.Router();
 
 router.get('/getRecord/:text', (req: Request, res: Response): void => {
     const data: IGetRequest = req.params;
-    const { text, useCache } = data;
+    const { text } = data;
+
+    let useCache = true;
+    if (typeof req.query.cache !== 'undefined' && req.query.cache == 0) {
+        useCache = false;
+    }
     const result: IResult = getRecord(text, useCache);
 
     res.status(result.status === Status.success ? 200 : 400).json(result);
