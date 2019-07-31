@@ -25,7 +25,7 @@ declare const io: any;
         }
 
         $.ajax({
-            url: `getRecord/${text}?cache=${useCache ? 1 : 0}`,
+            url: `getRecord/${encodeURIComponent(text)}?cache=${useCache ? 1 : 0}`,
             dataType: 'json',
         }).done(completeRecords);
     };

@@ -26,7 +26,7 @@ const requestCallback = (done: any, err: Error, res: Response, body: string): vo
 
 test('get records without cache', (done): void => {
     const name: string = sample.display_text.toLowerCase();
-    const url: string = `${config.baseUrl}getRecord/${name}?cache=0`;
+    const url: string = `${config.baseUrl}getRecord/${encodeURIComponent(name)}?cache=0`;
 
     request.get({ url }, (err: Error, res: Response, body: string): void =>
         requestCallback(done, err, res, body));
@@ -34,7 +34,7 @@ test('get records without cache', (done): void => {
 
 test('get records with cache', (done): void => {
     const name: string = sample.display_text.toLowerCase();
-    const url: string = `${config.baseUrl}getRecord/${name}`;
+    const url: string = `${config.baseUrl}getRecord/${encodeURIComponent(name)}`;
 
     request.get({ url }, (err: Error, res: Response, body: string): void =>
         requestCallback(done, err, res, body));
