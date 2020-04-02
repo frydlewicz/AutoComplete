@@ -1,35 +1,33 @@
 import express, { Request, Response } from 'express';
 
-import { Status, IGetRequest, IAddRequest, IRemoveRequest } from '../model/Main';
+import { Status } from '../model/Main';
 import { IResult, getRecord, addRecord, removeRecord } from '../model/Record';
 
 const router = express.Router();
 
 router.get('/getRecord/:text', (req: Request, res: Response): void => {
-    const data: IGetRequest = req.params;
-    const { text } = data;
-
+    const { text } = req.params;
     let useCache = true;
+
     if (typeof req.query.cache !== 'undefined' && req.query.cache == 0) {
         useCache = false;
     }
+
     const result: IResult = getRecord(text, useCache);
 
     res.status(result.status === Status.success ? 200 : 400).json(result);
 });
 
 router.post('/addRecord', (req: Request, res: Response): void => {
-    const data: IAddRequest = req.body;
-    const { display_text, output_text, visible } = data;
+    const { display_text, output_text, visible } = req.body;
     const result: IResult = addRecord(display_text, output_text, visible);
 
     res.status(result.status === Status.success ? 200 : 400).json(result);
 });
 
 router.delete('removeRecord:id', (req: Request, res: Response): void => {
-    const data: IRemoveRequest = req.params;
-    const { id } = data;
-    const result: IResult = removeRecord(id);
+    const { id } = req.params;
+    const result: IResult = removeRecord(parseInt(id, 10));
 
     res.status(result.status === Status.success ? 200 : 400).json(result);
 });
