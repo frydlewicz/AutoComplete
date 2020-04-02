@@ -10,7 +10,7 @@ Client uses **jQuery**, **mustache** and **less**. All code written in **TypeScr
 ![AutoComplete screenshot](https://autocomplete.frydlewicz.pl/autocomplete.png)
 
 ## Example
-* [cities of the world](https://autocomplete.frydlewicz.pl)
+[cities of the world](https://autocomplete.frydlewicz.pl)
 
 ## Author
 [Kamil Frydlewicz](https://frydlewicz.pl)
