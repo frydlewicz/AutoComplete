@@ -9,7 +9,7 @@ router.get('/getRecord/:text', (req: Request, res: Response): void => {
     const { text } = req.params;
     let useCache = true;
 
-    if (typeof req.query.cache !== 'undefined' && req.query.cache == 0) {
+    if (typeof req.query.cache !== 'undefined' && req.query.cache == '0') {
         useCache = false;
     }
 

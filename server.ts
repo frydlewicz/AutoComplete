@@ -3,7 +3,6 @@ import http from 'http';
 import sio from 'socket.io';
 import mustacheExpress from 'mustache-express';
 import path from 'path';
-import bodyParser from 'body-parser';
 
 import httpApi from './api/http';
 import socketApi from './api/socket';
@@ -21,10 +20,12 @@ app.engine('html', mustacheExpress());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(express.urlencoded({
+    extended: false,
+}));
 
-app.get('/', (req: Request, res: Response): void =>
+app.get('/', (_: Request, res: Response): void =>
     res.render('index.html', {
         text: 'Hello world!',
     }));
