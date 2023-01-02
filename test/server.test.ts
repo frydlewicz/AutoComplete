@@ -1,81 +1,100 @@
-import request, { Response } from 'request';
+import fetch, { Response } from 'node-fetch';
 
 import config from '../config.json';
 
-test('GET /', (done): void => {
+test('GET /', (done: jest.DoneCallback): void => {
     const url: string = config.baseUrl;
 
-    request(url, (err: Error, res: Response, body: string): void => {
-        if (err || res.statusCode != 200 || typeof body !== 'string') {
-            return done(1);
-        }
+    fetch(url)
+        .then((res: Response) => {
+            if (res.status != 200) {
+                throw new Error('Incorrect status code!');
+            }
 
-        const found: number = body.toLowerCase().indexOf('autocomplete');
+            return res.text();
+        })
+        .then((body: string) => {
+            if (!body.includes('<html>')) {
+                throw new Error('Invalid main page structure!');
+            }
 
-        if (found === -1) {
-            return done(2);
-        }
-
-        done();
-    });
+            done();
+        })
+        .catch((err: Error) => done(err));
 });
 
-test('GET /css/main.css', (done): void => {
-    const url: string = `${config.baseUrl}css/main.css`;
+test('GET /css/main.css', (done: jest.DoneCallback): void => {
+    const url = `${config.baseUrl}/css/main.css`;
 
-    request(url, (err: Error, res: Response): void => {
-        if (err || res.statusCode != 200) {
-            return done(1);
-        }
-
-        done();
-    });
+    fetch(url)
+        .then((res: Response): void => {
+            if (res.status != 200) {
+                throw new Error('Incorrect status code!');
+            }
+            if (!res.headers.get('content-type').includes('css')) {
+                throw new Error('Incorrect content type!');
+            }
+            done();
+        })
+        .catch((err: Error) => done(err));
 });
 
-test('GET /js/jquery.autoComplete.js', (done): void => {
-    const url: string = `${config.baseUrl}js/jquery.autoComplete.js`;
+test('GET /js/jquery.autoComplete.js', (done: jest.DoneCallback): void => {
+    const url = `${config.baseUrl}/js/jquery.autoComplete.js`;
 
-    request(url, (err: Error, res: Response): void => {
-        if (err || res.statusCode != 200) {
-            return done(1);
-        }
-
-        done();
-    });
+    fetch(url)
+        .then((res: Response): void => {
+            if (res.status != 200) {
+                throw new Error('Incorrect status code!');
+            }
+            if (!res.headers.get('content-type').includes('javascript')) {
+                throw new Error('Incorrect content type!');
+            }
+            done();
+        })
+        .catch((err: Error) => done(err));
 });
 
-test('GET /js/stopwatch.js', (done): void => {
-    const url: string = `${config.baseUrl}js/stopwatch.js`;
+test('GET /js/stopwatch.js', (done: jest.DoneCallback): void => {
+    const url = `${config.baseUrl}/js/stopwatch.js`;
 
-    request(url, (err: Error, res: Response): void => {
-        if (err || res.statusCode != 200) {
-            return done(1);
-        }
-
-        done();
-    });
+    fetch(url)
+        .then((res: Response): void => {
+            if (res.status != 200) {
+                throw new Error('Incorrect status code!');
+            }
+            if (!res.headers.get('content-type').includes('javascript')) {
+                throw new Error('Incorrect content type!');
+            }
+            done();
+        })
+        .catch((err: Error) => done(err));
 });
 
-test('GET /js/client.js', (done): void => {
-    const url: string = `${config.baseUrl}js/client.js`;
+test('GET /js/client.js', (done: jest.DoneCallback): void => {
+    const url = `${config.baseUrl}/js/client.js`;
 
-    request(url, (err: Error, res: Response): void => {
-        if (err || res.statusCode != 200) {
-            return done(1);
-        }
-
-        done();
-    });
+    fetch(url)
+        .then((res: Response): void => {
+            if (res.status != 200) {
+                throw new Error('Incorrect status code!');
+            }
+            if (!res.headers.get('content-type').includes('javascript')) {
+                throw new Error('Incorrect content type!');
+            }
+            done();
+        })
+        .catch((err: Error) => done(err));
 });
 
-test('GET non-existent file', (done: any): void => {
-    const url: string = `${config.baseUrl}hY6wj4pR`;
+test('GET non-existent file', (done: jest.DoneCallback): void => {
+    const url = `${config.baseUrl}/hY6wj4pR`;
 
-    request(url, (err: Error, res: Response): void => {
-        if (err || res.statusCode != 404) {
-            return done(1);
-        }
-
-        done();
-    });
+    fetch(url)
+        .then((): void => {
+            done('Incorrect status code!');
+        })
+        .catch(() => {
+            done();
+        });
 });

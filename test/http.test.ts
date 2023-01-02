@@ -1,4 +1,4 @@
-import request, { Response } from 'request';
+import fetch, { Response } from 'node-fetch';
 
 import config from '../config.json';
 import { Status, IAddRequest } from '../model/Main';
@@ -10,43 +10,75 @@ const sample: IAddRequest = {
     visible: true,
 };
 
-const requestCallback = (done: any, err: Error, res: Response, body: string): void => {
-    if (err || res.statusCode != 200 || typeof body !== 'string') {
-        return done(1);
-    }
-
-    const result: IResult = JSON.parse(body);
-
-    if (result.status != Status.success || !result.records || result.records.length === 0) {
-        return done(2);
-    }
-
-    done();
-};
-
-test('get records without cache', (done): void => {
+test('get records without cache', (done: jest.DoneCallback): void => {
     const name: string = sample.display_text.toLowerCase();
-    const url: string = `${config.baseUrl}getRecord/${encodeURIComponent(name)}?cache=0`;
+    const url = `${config.baseUrl}/getRecord/${encodeURIComponent(name)}?cache=0`;
 
-    request.get({ url }, (err: Error, res: Response, body: string): void =>
-        requestCallback(done, err, res, body));
+    fetch(url)
+        .then((res: Response) => {
+            if (res.status != 200) {
+                throw new Error('Incorrect status code!');
+            }
+
+            return res.json();
+        })
+        .then((data: IResult) => {
+            if (!data || data.status != Status.success || !data.records || data.records?.length === 0) {
+                throw new Error('Invalid JSON response!');
+            }
+
+            done();
+        })
+        .catch((err: Error) => done(err));
 });
 
-test('get records with cache', (done): void => {
+test('get records with cache', (done: jest.DoneCallback): void => {
     const name: string = sample.display_text.toLowerCase();
-    const url: string = `${config.baseUrl}getRecord/${encodeURIComponent(name)}`;
+    const url = `${config.baseUrl}/getRecord/${encodeURIComponent(name)}`;
 
-    request.get({ url }, (err: Error, res: Response, body: string): void =>
-        requestCallback(done, err, res, body));
+    fetch(url)
+        .then((res: Response) => {
+            if (res.status != 200) {
+                throw new Error('Incorrect status code!');
+            }
+
+            return res.json();
+        })
+        .then((data: IResult) => {
+            if (!data || data.status != Status.success || !data.records || data.records?.length === 0) {
+                throw new Error('Invalid JSON response!');
+            }
+
+            done();
+        })
+        .catch((err: Error) => done(err));
 });
 
-test('post new unique record', (done): void => {
-    const url: string = `${config.baseUrl}addRecord`;
+test('post new unique record', (done: jest.DoneCallback): void => {
+    const url = `${config.baseUrl}/addRecord`;
     const form: IAddRequest = { ...sample };
     const hash: string = Math.random().toString(36).substring(7);
 
     form.display_text += ` (${hash})`;
 
-    request.post({ url, form }, (err: Error, res: Response, body: string): void =>
-        requestCallback(done, err, res, body));
+    fetch(url, {
+        method: 'post',
+        body: JSON.stringify(form),
+        headers: { 'Content-Type': 'application/json' }
+    })
+        .then((res: Response) => {
+            if (res.status != 200) {
+                throw new Error('Incorrect status code!');
+            }
+
+            return res.json();
+        })
+        .then((data: IResult) => {
+            if (!data || data.status != Status.success || !data.records || data.records?.length === 0) {
+                throw new Error('Invalid JSON response!');
+            }
+
+            done();
+        })
+        .catch((err: Error) => done(err));
 });

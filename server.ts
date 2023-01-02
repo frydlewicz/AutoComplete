@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
 import http from 'http';
-import sio from 'socket.io';
+import { Server } from 'socket.io';
 import mustacheExpress from 'mustache-express';
 import path from 'path';
 
@@ -9,11 +9,11 @@ import socketApi from './api/socket';
 
 const app = express();
 const server = http.createServer(app);
-const io = sio(server);
-const port: string | number = process.env.PORT || 3000;
+const io = new Server(server);
+const port: number = parseInt(process.env.PORT || '3000', 10);
 
 server.listen(port, (): void =>
-    console.log(`listening on port: ${port}`));
+    console.info(`listening on port: ${port}`));
 
 app.engine('html', mustacheExpress());
 
@@ -24,6 +24,8 @@ app.use(express.json());
 app.use(express.urlencoded({
     extended: false,
 }));
+
+app.disable('x-powered-by');
 
 app.get('/', (_: Request, res: Response): void =>
     res.render('index.html', {

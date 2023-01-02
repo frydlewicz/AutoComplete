@@ -78,7 +78,7 @@ export const removeRecord = (id?: number): IResult => {
 
     const length: number = records.length;
 
-    for (let i: number = 0; i < length; ++i) {
+    for (let i = 0; i < length; ++i) {
         const record: IRecord = records[i];
 
         if (record.id === id) {

@@ -22,7 +22,7 @@ const randomRecord = (): IRecord => {
     return record;
 };
 
-const recordReturned = (done: any, record: IRecord, result?: IResult): void => {
+const recordReturned = (done: jest.DoneCallback, record: IRecord, result?: IResult): void => {
     if (!result || result.status != Status.success || !result.records) {
         return done(1);
     }
@@ -37,7 +37,7 @@ const recordReturned = (done: any, record: IRecord, result?: IResult): void => {
     done();
 };
 
-const recordExists = (done: any, record: IAddRequest): void => {
+const recordExists = (done: jest.DoneCallback, record: IAddRequest): void => {
     const found: IRecord = records.find((temp: IRecord): boolean =>
         temp.display_text === record.display_text);
 
@@ -51,19 +51,19 @@ const recordExists = (done: any, record: IAddRequest): void => {
 const record: IRecord = randomRecord();
 const name: string = record.display_text.toLowerCase();
 
-test('filter records without cache', (done): void => {
+test('filter records without cache', (done: jest.DoneCallback): void => {
     const result: IResult = getRecord(name, false);
 
     recordReturned(done, record, result);
 });
 
-test('filter records with cache', (done): void => {
+test('filter records with cache', (done: jest.DoneCallback): void => {
     const result: IResult = getRecord(name, true);
 
     recordReturned(done, record, result);
 });
 
-test('add new unique record', (done): void => {
+test('add new unique record', (done: jest.DoneCallback): void => {
     const record: IAddRequest = { ...sample };
     const hash: string = Math.random().toString(36).substring(7);
 

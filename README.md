@@ -1,6 +1,6 @@
 # AutoComplete
 
-![AutoComplete version](https://img.shields.io/badge/AutoComplete-1.0.2-green.svg)
+![AutoComplete version](https://img.shields.io/badge/AutoComplete-2.0.0-green.svg)
 [![License](https://img.shields.io/badge/license-MIT-red.svg)](https://opensource.org/licenses/MIT)
 
 Proof of concept application implements auto complete client-server solution (cities of the world example).

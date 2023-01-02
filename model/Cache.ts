@@ -10,7 +10,7 @@ const keys: string[] = [];
 let index = -1;
 
 const isTextValid = (lowerCaseText: string): boolean => {
-    const regExp: RegExp = RegExp(/^[a-z]+$/i);
+    const regExp = RegExp(/^[a-z]+$/i);
 
     return regExp.test(lowerCaseText);
 };
@@ -29,7 +29,7 @@ export const getRecordFromJson = (text: string): IRecord[] => {
             result.push(record);
         }
     }
-    console.log('Cache did NOT use');
+    console.info('Cache did NOT use');
 
     return result;
 };
@@ -42,7 +42,7 @@ export const getRecordFromCache = (text: string): IRecord[] => {
     }
 
     if (typeof cache[lowerCaseText] !== 'undefined') {
-        console.log('Cache DID use');
+        console.info('Cache DID use');
 
         return cache[lowerCaseText];
     }

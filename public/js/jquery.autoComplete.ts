@@ -5,11 +5,11 @@ declare const jQuery: any;
         throw new Error('No jQuery library found!');
     }
 
-    const prefix: string = 'autoComplete';
-    const className: string = `${prefix}__list`;
-    const classNameItem: string = `${prefix}__list-item`;
-    const classNameActiveItem: string = `${prefix}__list-item--active`;
-    let counter: number = 0;
+    const prefix = 'autoComplete';
+    const className = `${prefix}__list`;
+    const classNameItem = `${prefix}__list-item`;
+    const classNameActiveItem = `${prefix}__list-item--active`;
+    let counter = 0;
 
     $.fn.autoComplete = function (search: any): void {
         if (typeof this.val !== 'function') {
@@ -17,8 +17,8 @@ declare const jQuery: any;
         }
         ++counter;
 
-        const self = this;
-        const idName: string = `${prefix}-${counter}__list`;
+        const self = $(this);
+        const idName = `${prefix}-${counter}__list`;
         const $body = $('body');
         const $list = $(`<div class="${className}" id="${idName}"></div>`);
         let current: number = null;
@@ -96,7 +96,7 @@ declare const jQuery: any;
             }
         };
 
-        const onClick = function (): void {
+        const onClick = (): void => {
             if ($(this).hasClass(classNameItem) && $(this).data('output')) {
                 return self.val($(this).data('output'));
             }
