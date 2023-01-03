@@ -91,10 +91,13 @@ test('GET non-existent file', (done: jest.DoneCallback): void => {
     const url = `${config.baseUrl}/hY6wj4pR`;
 
     fetch(url)
-        .then((): void => {
+        .then((res: Response): void => {
+            if (res.status == 404) {
+                return done();
+            }
             done('Incorrect status code!');
         })
-        .catch(() => {
-            done();
+        .catch((err) => {
+            done(err);
         });
 });
