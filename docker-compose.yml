@@ -1,5 +1,5 @@
 services:
-  main:
+  autocomplete-main:
     build:
       args:
         port: 4015
