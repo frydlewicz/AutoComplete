@@ -1,8 +1,10 @@
+.git
 .vscode
 
-config.json
 node_modules
 npm-debug.log
+public/uploads
+test
 
 *.css
 *.js

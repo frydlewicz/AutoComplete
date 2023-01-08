@@ -1,0 +1,13 @@
+services:
+  main:
+    build:
+      args:
+        port: 4015
+      context: .
+    container_name: autocomplete-main-${TAG}
+    environment:
+      - TZ=Europe/Warsaw
+    image: autocomplete-main:${TAG}
+    ports:
+      - "4015:4015"
+    restart: always
